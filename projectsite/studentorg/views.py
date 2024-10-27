@@ -114,3 +114,21 @@ class CollegeList(ListView):
     content_object_name = 'college'
     template_name = 'college_list.html'
     paginate_by = 5
+
+class CollegeCreateView(CreateView):
+    model = College
+    form_class = CollegeForm
+    template_name = 'college_add.html'
+    success_url = reverse_lazy('college-list')
+
+class CollegeUpdateView(UpdateView):
+    model = College
+    form_class = CollegeForm
+    template_name = 'college_edit.html'
+    success_url = reverse_lazy('college-list')
+
+class CollegeDeleteView(DeleteView):
+    model = College
+    form_class = CollegeForm
+    template_name = 'college_del.html'
+    success_url = reverse_lazy('college-list')
