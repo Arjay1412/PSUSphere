@@ -65,3 +65,10 @@ class StudentList(ListView):
     content_object_name = 'student'
     template_name = 'student_list.html'
     paginate_by = 5
+
+class StudentCreateView(CreateView):
+    model = Student
+    form_class = StudentForm
+    template_name = 'orgmember_add.html'
+    success_url = reverse_lazy('student-list')
+
