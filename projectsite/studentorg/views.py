@@ -72,3 +72,15 @@ class StudentCreateView(CreateView):
     template_name = 'orgmember_add.html'
     success_url = reverse_lazy('student-list')
 
+class StudentUpdateView(UpdateView):
+    model = Student
+    form_class = StudentForm
+    template_name = 'student_edit.html'
+    success_url = reverse_lazy('student-list')
+
+class StudentDeleteView(DeleteView):
+    model = Student
+    form_class = StudentForm
+    template_name = 'student_del.html'
+    success_url = reverse_lazy('student-list')
+
