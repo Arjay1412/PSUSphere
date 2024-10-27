@@ -56,6 +56,13 @@ class OrgMemberlist(ListView):
     template_name = 'orgmember_list.html'
     paginate_by = 5
 
+    def get_queryset(self, *args, **kwargs):
+        qs = super(OrgMemberlist, self).get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") != None:
+            query = self.request.GET.get('q')
+            qs = qs.filter(Q(date_joined__icontains=query))
+        return qs
+
 class OrgMemberCreateView(CreateView):
     model = OrgMember
     form_class = OrgMemberForm
@@ -79,6 +86,13 @@ class StudentList(ListView):
     content_object_name = 'student'
     template_name = 'student_list.html'
     paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(StudentList, self).get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") != None:
+            query = self.request.GET.get('q')
+            qs = qs.filter(Q(student_id__icontains=query) | Q(firstname__icontains=query) | Q(lastname__icontains=query) | Q(middlename__icontains=query))
+        return qs
 
 class StudentCreateView(CreateView):
     model = Student
@@ -105,6 +119,13 @@ class ProgramList(ListView):
     template_name = 'program_list.html'
     paginate_by = 5
 
+    def get_queryset(self, *args, **kwargs):
+        qs = super(ProgramList, self).get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") != None:
+            query = self.request.GET.get('q')
+            qs = qs.filter(Q(prog_name__icontains=query))
+        return qs
+
 class ProgramCreateView(CreateView):
     model = Program
     form_class = ProgramForm
@@ -128,6 +149,13 @@ class CollegeList(ListView):
     content_object_name = 'college'
     template_name = 'college_list.html'
     paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(CollegeList, self).get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") != None:
+            query = self.request.GET.get('q')
+            qs = qs.filter(Q(college_name__icontains=query))
+        return qs
 
 class CollegeCreateView(CreateView):
     model = College
