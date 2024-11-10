@@ -95,7 +95,8 @@ class StudentList(ListView):
         if self.request.GET.get("q") != None:
             query = self.request.GET.get('q')
             qs = qs.filter(Q(student_id__icontains=query) | Q(firstname__icontains=query) |
-                            Q(lastname__icontains=query) | Q(middlename__icontains=query))
+                            Q(lastname__icontains=query) | Q(middlename__icontains=query) |
+                            Q(program__prog_name__icontains=query))
         return qs
 
 class StudentCreateView(CreateView):
