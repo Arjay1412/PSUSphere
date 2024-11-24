@@ -14,8 +14,9 @@ from django.db.models import Q
 # Create your views here.
 
 @method_decorator(login_required, name='dispatch')
+
 class HomePageView(ListView):
-    model = Organization
+    model = Student 
     context_object_name = 'home'
     template_name = "home.html"
 
