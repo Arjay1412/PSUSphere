@@ -176,6 +176,6 @@ class CollegeUpdateView(UpdateView):
 
 class CollegeDeleteView(DeleteView):
     model = College
-#    form_class = CollegeForm
+#   form_class = CollegeForm
     template_name = 'college_del.html'
     success_url = reverse_lazy('college-list')

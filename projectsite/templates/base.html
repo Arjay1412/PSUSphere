@@ -14,8 +14,8 @@
 	<div class="wrapper">
 		<div class="main-header">
 			<div class="logo-header">
-				<a href="index.html" class="logo">
-					Ready Dashboard
+				<a href="{% url 'home'%}" class="logo">
+					PSU Sphere
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -105,12 +105,12 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> 
-                                <img src="{% static 'img/profile.jpg' %}" alt="user-img" width="36" class="img-circle">
+                                <img src="{% static 'img/profile1.jpg' %}" alt="user-img" width="36" class="img-circle">
                                 <span >Arjay</span></span> </a>
 							<ul class="dropdown-menu dropdown-user">
 								<li>
 									<div class="user-box">
-										<div class="u-img"><img src="{% static 'img/profile.jpg' %}" alt="user"></div>
+										<div class="u-img"><img src="{% static 'img/profile1.jpg' %}" alt="user"></div>
 										<div class="u-text">
 											<h4>Arjay</h4>
 											<p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
@@ -123,7 +123,10 @@
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Logout</a>
+									<form class="dropdown-item" method="post" action="{% url 'logout' %}">
+										{% csrf_token %}
+										<button class="btn btn-link m-0 p-0 text-danger" type="submit"><i class="fa fa-power-off"></i> Logout</button>
+									</form>
 								</ul>
 								<!-- /.dropdown-user -->
 							</li>
@@ -135,7 +138,7 @@
 				<div class="scrollbar-inner sidebar-wrapper">
 					<div class="user">
 						<div class="photo">
-							<img src="{% static 'img/profile.jpg' %}">
+							<img src="{% static 'img/profile1.jpg' %}">
 						</div>
 						<div class="info">
 							<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -147,7 +150,7 @@
 							</a>
 							<div class="clearfix"></div>
 
-							<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+							<div class="collapse in" id="collapseExample" aria-expanded="true" style = "">
 								<ul class="nav">
 									<li>
 										<a href="#profile">
